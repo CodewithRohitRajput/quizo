@@ -34,7 +34,7 @@ async def login(user : login):
     token = create_access_token({"_id" : str(is_user["_id"]), "email" : user.email})
 
     response = Response(
-        content=f"{is_user["username"]} Logged in Successfully"
+        content=f"{is_user["username"]} Logged in Successfully , token :  {token}"
     )
     response.set_cookie(
         key="token",

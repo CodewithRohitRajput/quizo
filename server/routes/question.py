@@ -13,3 +13,12 @@ async def createQuestion(data : question):
 
     return {"message" : f"{new_question.inserted_id} created"}
     
+    
+
+@router.get("/{question_id}")
+async def getquestionbyid(question_id : str):
+    question = await question_collection.find_one({"_id" : ObjectId(question_id)})
+    question["_id"] = str(question["_id"])
+    question.pop("correct_option", None)
+    return question
+

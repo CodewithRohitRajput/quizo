@@ -39,7 +39,8 @@ async def getallquizzes(user_id: str = Depends(get_current_user)):
         return quizzes
 
 @router.get("/{quiz_id}")
-async def getquizbyid(quiz_id : str):
+async def getquizbyid(quiz_id : str, user_id : str = Depends(get_current_user)):
      quiz = await quiz_collection.find_one({"_id" : ObjectId(quiz_id)})
      quiz["_id"] = str(quiz["_id"])
      return quiz
+

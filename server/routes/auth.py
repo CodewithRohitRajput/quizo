@@ -1,7 +1,8 @@
 from config.security import hashPassword,verifyPassword,create_access_token
 from models.user import user , login
 from config.mongodb import user_collection
-from fastapi import HTTPException, status, APIRouter, Response
+from fastapi import HTTPException, status, APIRouter
+from fastapi.responses import JSONResponse
 from jose import jwt
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
@@ -14,11 +15,23 @@ async def signup(user : user):
     
     hashed_pass =  hashPassword(user.password)
 
-    await user_collection.insert_one(
+    new_user =  await user_collection.insert_one(
         {"username": user.username, "email": user.email, "password": hashed_pass}
     )
 
-    return {"message" : f"{user.username} your profile is created"}
+    token = create_access_token({"_id" : str(new_user.inserted_id)})
+    response = JSONResponse(
+        content={"message" : "Your profile is created", "token" : token}
+    )
+    response.set_cookie(
+        key="token",
+        value=token,
+        httponly=True,
+        secure=False,
+        samesite="lax"
+    )
+
+    return response
 
 
 @router.post("/login")
@@ -33,8 +46,8 @@ async def login(user : login):
 
     token = create_access_token({"_id" : str(is_user["_id"]), "email" : user.email})
 
-    response = Response(
-        content=f"{is_user["username"]} Logged in Successfully , token :  {token}"
+    response = JSONResponse(
+        content={"message" : "Logged in Successfully" , "token" :  token}
     )
     response.set_cookie(
         key="token",

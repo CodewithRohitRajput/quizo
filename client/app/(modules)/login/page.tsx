@@ -2,17 +2,15 @@
 
 import { useState } from "react"
 
-export default function Signup(){
+export default function Login(){
     const[form, setForm] = useState({
-        username : "",
         email : "",
         password : ""
     })
-    const[responses , setResponse] = useState<string>("")
-
-    const handleSignup = async (e : any) => {
+    const[response , setResponse] = useState<string>("")
+    const handleLogin = async (e : any) => {
         e.preventDefault();
-        const res = await fetch(`http://localhost:8000/auth/signup`, {
+        const res = await fetch(`http://localhost:8000/auth/login`, {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
@@ -21,29 +19,23 @@ export default function Signup(){
             credentials : "include"
         })
         const response = await res.json();
-        if(response.message){
-            setResponse(response.message)
-        }
-        else if(response.detail){
-            setResponse(response.detail)
+        if(response){
+            setResponse(response)
         }
     }
 
     return(
         <div>
             <div>
-                <h1>Signup</h1>
-
-                <input type="text" placeholder="Username"
-                value={form.username} onChange={(e)=>setForm({...form, username :e.target.value})}/>
+                <h1>Login</h1>
                 <input type="email" placeholder="Email"
                 value={form.email} onChange={(e)=>setForm({...form, email :e.target.value})}/>
                 <input type="password" placeholder="Password"
                 value={form.password} onChange={(e)=>setForm({...form, password :e.target.value})}/>
-                <button onClick={handleSignup}>
+                <button onClick={handleLogin}>
                     create account
                 </button>
-                {responses}
+                {response}
             </div>
         </div>
     )

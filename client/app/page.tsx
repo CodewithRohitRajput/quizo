@@ -16,7 +16,7 @@ export default function Home() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const floatingEmojis = ['🔥', '💯', '⚡', '✨', '🚀', '💪', '🎯', '👑'];
+  // const floatingEmojis = ['🔥', '💯', '⚡', '✨', '🚀', '💪', '🎯', '👑'];
   
   const categories = [
     { name: 'Science', emoji: '🧬', color: 'from-green-400 to-cyan-400' },
@@ -113,7 +113,7 @@ export default function Home() {
         ></div>
 
         {/* Floating emoji particles */}
-        {floatingEmojis.map((emoji, i) => (
+        {/* {floatingEmojis.map((emoji, i) => (
           <div
             key={i}
             className="absolute text-4xl animate-float"
@@ -126,7 +126,7 @@ export default function Home() {
           >
             {emoji}
           </div>
-        ))}
+        ))} */}
 
         {/* Grid pattern overlay */}
         <div className="absolute inset-0 opacity-10" style={{
@@ -148,11 +148,11 @@ export default function Home() {
           <div className="relative">
             <h1 className="text-7xl sm:text-8xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 animate-gradient-x pb-4"
                 style={{ fontFamily: '"Bebas Neue", "Impact", sans-serif' }}>
-              QUIZO
+              Q   U   I   Z   O
             </h1>
             <div className="absolute inset-0 text-7xl sm:text-8xl md:text-9xl font-black tracking-tighter text-purple-500 animate-glitch opacity-70 blur-sm"
                  style={{ fontFamily: '"Bebas Neue", "Impact", sans-serif' }}>
-              QUIZO
+              Q   U   I   Z   O
             </div>
           </div>
 

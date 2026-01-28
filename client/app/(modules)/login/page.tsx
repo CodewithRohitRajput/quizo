@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Sparkles, Mail, Lock, ArrowRight, Eye, EyeOff, CheckCircle, AlertCircle } from 'lucide-react'
+import { useRouter } from "next/navigation"
 
 export default function Login(){
     const[form, setForm] = useState({
@@ -11,6 +12,7 @@ export default function Login(){
     const[response , setResponse] = useState<string>("")
     const[showPassword, setShowPassword] = useState(false)
     const[isLoading, setIsLoading] = useState(false)
+    const router = useRouter()
 
     const handleLogin = async (e : any) => {
         e.preventDefault();
@@ -28,10 +30,12 @@ export default function Login(){
             const response = await res.json();
             if(response.message){
                 setResponse(response.message)
+                router.push('/quiz')
             }
             else if(response.detail){
                 setResponse(response.detail)
             }
+
         } catch (error) {
             setResponse("something went wrong fr 😭")
         } finally {
@@ -54,7 +58,7 @@ export default function Login(){
             }}></div>
 
             {/* Floating emojis */}
-            {['👑', '⚡', '✨', '💫', '🎯', '💜'].map((emoji, i) => (
+            {/* {['👑', '⚡', '✨', '💫', '🎯', '💜'].map((emoji, i) => (
                 <div
                     key={i}
                     className="absolute text-4xl animate-float opacity-20"
@@ -67,7 +71,7 @@ export default function Login(){
                 >
                     {emoji}
                 </div>
-            ))}
+            ))} */}
 
             {/* Main login card */}
             <div className="relative z-10 w-full max-w-md">

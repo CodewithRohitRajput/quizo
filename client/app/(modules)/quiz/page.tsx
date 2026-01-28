@@ -44,14 +44,14 @@ export default function Quiz(){
     return(
         <div className="min-h-screen bg-black">
             {/* Background effects */}
-            <div className="fixed inset-0 bg-gradient-to-br from-purple-900 via-black to-cyan-900 opacity-50"></div>
+            {/* <div className="fixed inset-0 bg-gradient-to-br from-purple-900 via-black to-cyan-900 opacity-50"></div>
             <div className="fixed inset-0 opacity-10" style={{
                 backgroundImage: `linear-gradient(rgba(147, 51, 234, 0.3) 1px, transparent 1px),
                                 linear-gradient(90deg, rgba(147, 51, 234, 0.3) 1px, transparent 1px)`,
                 backgroundSize: '50px 50px'
-            }}></div>
+            }}></div> */}
 
-            {/* Floating emojis */}
+            {/* Floating emojis
             {['🎯', '🧠', '⚡', '✨', '🔥', '💯'].map((emoji, i) => (
                 <div
                     key={i}
@@ -65,7 +65,7 @@ export default function Quiz(){
                 >
                     {emoji}
                 </div>
-            ))}
+            ))} */}
 
             <div className="relative z-10">
                 {/* Header */}

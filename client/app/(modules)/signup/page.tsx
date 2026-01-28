@@ -58,7 +58,7 @@ export default function Signup(){
             }}></div>
 
             {/* Floating emojis */}
-            {['🚀', '⚡', '✨', '💫', '🎯', '💜'].map((emoji, i) => (
+            {/* {['🚀', '⚡', '✨', '💫', '🎯', '💜'].map((emoji, i) => (
                 <div
                     key={i}
                     className="absolute text-4xl animate-float opacity-20"
@@ -71,7 +71,7 @@ export default function Signup(){
                 >
                     {emoji}
                 </div>
-            ))}
+            ))} */}
 
             {/* Main signup card */}
             <div className="relative z-10 w-full max-w-md">

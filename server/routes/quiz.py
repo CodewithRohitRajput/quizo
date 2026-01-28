@@ -34,6 +34,9 @@ async def getallquizzes(user_id: str = Depends(get_current_user)):
         quizzes = []
         async for q in quiz:
              q["_id"] = str(q["_id"])
+             if q.get("created_by"):
+                  user = await user_collection.find_one({"_id" : ObjectId(q["created_by"])})
+                  q["created_by"] = user["username"]
              quizzes.append(q)
 
         return quizzes

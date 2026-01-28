@@ -42,7 +42,7 @@ async def login(user : login):
     is_pass = verifyPassword(user.password, is_user["password"])
 
     if not is_pass:
-        raise HTTPException(status_code=500, detail="password is wrong")
+        raise HTTPException(status_code=500, detail="Incorrect password")
 
     token = create_access_token({"_id" : str(is_user["_id"]), "email" : user.email})
 

@@ -19,8 +19,11 @@ export default function Login(){
             credentials : "include"
         })
         const response = await res.json();
-        if(response){
-            setResponse(response)
+        if(response.message){
+            setResponse(response.message)
+        }
+        else if(response.detail){
+            setResponse(response.detail)
         }
     }
 

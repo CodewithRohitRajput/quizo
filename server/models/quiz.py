@@ -6,7 +6,7 @@ class quiz(BaseModel):
     title : str
     description : Optional[str] = None
     created_by : Optional[str] = None
-    question_ids : List[str] = []
+    question_ids : Optional[List[str]] = []
     is_active : bool = False
     created_at : datetime = datetime.utcnow()
 

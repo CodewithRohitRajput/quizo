@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from "react"
 import { Sparkles, Clock, User, Play, Trophy, TrendingUp, Zap, CheckCircle, XCircle, Search, Filter } from 'lucide-react'
+import { useRouter } from "next/navigation";
 
 export default function Quiz(){
     const[quiz,setQuiz] = useState<any[]>([]);
     const[loading, setLoading] = useState(true);
     const[searchTerm, setSearchTerm] = useState("");
     const[filterActive, setFilterActive] = useState<boolean | null>(null);
-
+    const router = useRouter()
     useEffect(()=>{
         const getQuiz = async () => {
             try {
@@ -260,7 +261,7 @@ export default function Quiz(){
                             <p className="text-purple-300 text-lg mb-6 font-semibold">
                                 create ur own quiz and challenge the community 🔥
                             </p>
-                            <button className="px-8 py-4 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-full font-black text-xl text-white hover:scale-105 transition-transform shadow-xl">
+                            <button onClick={()=>{router.push("/quiz/create")}} className="px-8 py-4 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-full font-black text-xl text-white hover:scale-105 transition-transform shadow-xl">
                                 CREATE QUIZ
                             </button>
                         </div>

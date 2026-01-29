@@ -190,13 +190,13 @@ export default function Home() {
               className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-black text-xl text-white overflow-hidden hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-purple-500/50"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative flex items-center gap-2">
-                <span>START QUIZ</span>
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-              </div>
               {isHovering && (
                 <div className="absolute inset-0 animate-ping bg-purple-400 rounded-full opacity-20"></div>
               )}
+             <div onClick={()=>{router.push("/quiz")}} className="relative flex items-center gap-2">
+                <span>START QUIZ</span>
+                <ArrowRight  className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+              </div>
             </button>
             
             <button className="px-8 py-4 border-2 border-purple-400 rounded-full font-bold text-xl text-purple-300 hover:bg-purple-600/20 transition-all duration-300 hover:scale-105">

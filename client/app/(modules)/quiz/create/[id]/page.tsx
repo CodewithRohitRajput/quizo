@@ -89,7 +89,7 @@ return(
                       updated[idx].options[optIdx] = e.target.value;
                       setQuestions(updated);
                     }}
-                    style={{ marginRight: "5px" }}
+                    style={{ marginRight: "6px" }}
                   />
                 ))}
               </div>

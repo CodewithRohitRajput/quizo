@@ -6,5 +6,5 @@ class question(BaseModel):
     quiz_id : str
     question_test : str
     options : List[str]
-    correct_option : int
+    correct_option : str
 

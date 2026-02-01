@@ -1,18 +1,18 @@
 from fastapi import APIRouter, FastAPI, Depends
 from config.mongodb import question_collection
-from models.question import question
+from models.question import question as Q
 from bson import ObjectId
 from typing import List
 
 
 router = APIRouter(prefix="/question", tags=["Question"] )
 
-@router.post("/")
-async def createQuestion(data : List[question]):
-    question = data.dict()
-    new_question = await question_collection.insert_one(question)
 
-    return {"message" : f"{new_question.inserted_id} created"}
+@router.post("/")
+async def createQuestion(data: List[Q]):
+    questions = [q.dict() for q in data]
+    new_question = await question_collection.insert_many(questions)
+    return {"message": f"{len(new_question.inserted_ids)} questions created", "ids": [str(_id) for _id in new_question.inserted_ids]}
 
 
 

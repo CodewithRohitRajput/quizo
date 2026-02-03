@@ -5,6 +5,7 @@ from models.quiz import quiz
 from config.mongodb import user_collection
 from config.mongodb import quiz_collection
 from bson import ObjectId
+from fastapi.responses import JSONResponse
 
 
 router = APIRouter(prefix="/quiz", tags=["Quiz"])
@@ -44,6 +45,8 @@ async def getallquizzes(user_id: str = Depends(get_current_user)):
 @router.get("/{quiz_id}")
 async def getquizbyid(quiz_id : str, user_id : str = Depends(get_current_user)):
      quiz = await quiz_collection.find_one({"_id" : ObjectId(quiz_id)})
+     if quiz is None:
+          return JSONResponse(status_code=404,content={"detail" : "quiz not found"})
      quiz["_id"] = str(quiz["_id"])
      return quiz
 

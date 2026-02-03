@@ -236,7 +236,7 @@ export default function Quiz(){
                                             {q.is_active ? (
                                                 <>
                                                     <Play className="w-5 h-5" />
-                                                    <span>ATTEMPT NOW</span>
+                                                    <span onClick={()=>{router.push(`/quiz/${q._id}`)}}>ATTEMPT NOW</span>
                                                     <Zap className="w-5 h-5" />
                                                 </>
                                             ) : (

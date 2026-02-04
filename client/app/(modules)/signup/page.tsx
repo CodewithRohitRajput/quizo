@@ -37,7 +37,7 @@ export default function Signup(){
             }
             router.push('/quiz')
         } catch (error) {
-            setResponse("something went wrong fr 😭")
+            setResponse("Something went wrong. Please try again.")
         } finally {
             setIsLoading(false);
         }
@@ -93,7 +93,7 @@ export default function Signup(){
                             <Sparkles className="w-6 h-6 text-yellow-400 animate-spin-slow" />
                         </div>
                         <p className="text-purple-300 font-semibold text-lg">
-                            join the big brain squad rn 🧠
+                            Join our community of learners
                         </p>
                     </div>
 
@@ -242,7 +242,7 @@ export default function Signup(){
                 <div className="mt-6 text-center">
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600/20 border border-purple-500/50 rounded-full backdrop-blur-sm">
                         <Sparkles className="w-4 h-4 text-yellow-400" />
-                        <span className="text-purple-300 font-bold text-sm">join 5000+ big brain legends</span>
+                        <span className="text-purple-300 font-bold text-sm">Join 5000+ Active Learners</span>
                     </div>
                 </div>
             </div>

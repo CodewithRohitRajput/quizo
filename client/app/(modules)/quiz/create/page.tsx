@@ -30,7 +30,7 @@ export default function CreateQuiz(){
             const data = await res.json();
             console.log(data)
             if (data.quiz_id) {
-                setResponse("Quiz created successfully! 🎉")
+                setResponse("Quiz created successfully!")
                 setForm({
                     title : '',
                     description : '',
@@ -44,13 +44,13 @@ export default function CreateQuiz(){
                 setResponse(data.detail)
             }
         } catch (error) {
-            setResponse("something went wrong fr 😭")
+            setResponse("Something went wrong. Please try again.")
         } finally {
             setIsLoading(false);
         }
     }
 
-    const isSuccess = response.toLowerCase().includes('success') || response.includes('🎉');
+    const isSuccess = response.toLowerCase().includes('success');
 
     return(
         <div className="min-h-screen bg-black">
@@ -62,21 +62,6 @@ export default function CreateQuiz(){
                 backgroundSize: '50px 50px'
             }}></div>
 
-            {/* Floating emojis */}
-            {['✨', '🎯', '💡', '🚀', '⚡', '🔥'].map((emoji, i) => (
-                <div
-                    key={i}
-                    className="fixed text-4xl animate-float opacity-10 pointer-events-none"
-                    style={{
-                        left: `${(i * 15 + 5)}%`,
-                        top: `${(i * 12 + 10)}%`,
-                        animationDelay: `${i * 0.5}s`,
-                        animationDuration: `${3 + i * 0.3}s`
-                    }}
-                >
-                    {emoji}
-                </div>
-            ))}
 
             <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
                 <div className="w-full max-w-2xl">
@@ -98,7 +83,7 @@ export default function CreateQuiz(){
                                 <Sparkles className="w-8 h-8 text-yellow-400 animate-spin-slow" />
                             </div>
                             <p className="text-purple-300 font-semibold text-lg">
-                                time to flex ur creativity and make something legendary 🎨
+                                Create engaging quizzes and share your knowledge
                             </p>
                         </div>
 
@@ -107,7 +92,7 @@ export default function CreateQuiz(){
                             <Info className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
                             <div>
                                 <p className="text-cyan-300 text-sm font-semibold">
-                                    <span className="font-black">PRO TIP:</span> Make ur quiz title catchy and description clear so people actually wanna take it frfr
+                                    <span className="font-black">TIP:</span> Make your quiz title engaging and description clear to attract participants
                                 </p>
                             </div>
                         </div>
@@ -122,7 +107,7 @@ export default function CreateQuiz(){
                                 </label>
                                 <input 
                                     type="text" 
-                                    placeholder="e.g., Ultimate Gen Z Pop Culture Quiz"
+                                    placeholder="e.g., Modern Pop Culture Quiz"
                                     value={form.title} 
                                     onChange={(e)=>setForm({...form, title : e.target.value})}
                                     className="w-full px-4 py-4 bg-purple-950/30 border border-purple-500/50 rounded-xl text-white placeholder-purple-400/50 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all text-lg"
@@ -138,7 +123,7 @@ export default function CreateQuiz(){
                                     QUIZ DESCRIPTION
                                 </label>
                                 <textarea
-                                    placeholder="e.g., Test ur knowledge on the hottest trends, memes, and pop culture moments. Only real ones will ace this 💯"
+                                    placeholder="e.g., Test your knowledge on current trends, memes, and pop culture moments."
                                     value={form.description} 
                                     onChange={(e)=>setForm({...form, description : e.target.value})}
                                     className="w-full px-4 py-4 bg-purple-950/30 border border-purple-500/50 rounded-xl text-white placeholder-purple-400/50 focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all text-lg resize-none"
@@ -174,8 +159,8 @@ export default function CreateQuiz(){
                                             </div>
                                             <div className="text-sm text-purple-400">
                                                 {form.is_active 
-                                                    ? 'quiz is live and ready to go 🚀' 
-                                                    : 'quiz is hidden from everyone'}
+                                                    ? 'Quiz is live and ready to go' 
+                                                    : 'Quiz is hidden from everyone'}
                                             </div>
                                         </div>
                                     </div>
@@ -191,8 +176,8 @@ export default function CreateQuiz(){
                                 </div>
                                 <p className="text-purple-400 text-xs">
                                     {form.is_active 
-                                        ? '✅ people can see and take ur quiz' 
-                                        : '🔒 only u can see it (activate when ur ready)'}
+                                        ? 'People can see and take your quiz' 
+                                        : 'Only you can see it (activate when ready)'}
                                 </p>
                             </div>
 
@@ -244,7 +229,7 @@ export default function CreateQuiz(){
                                         <span className="text-purple-200 font-black">WHAT HAPPENS NEXT?</span>
                                     </p>
                                     <p className="text-purple-400 text-sm">
-                                        After creating ur quiz, you'll add questions and answers. Then ur quiz will be ready for the world to see! 🌎
+                                        After creating your quiz, you'll add questions and answers. Then your quiz will be ready for the world to see!
                                     </p>
                                 </div>
                             </div>
@@ -255,7 +240,7 @@ export default function CreateQuiz(){
                     <div className="mt-6 text-center">
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600/20 border border-purple-500/50 rounded-full backdrop-blur-sm">
                             <Sparkles className="w-4 h-4 text-yellow-400" />
-                            <span className="text-purple-300 font-bold text-sm">ur about to create something legendary</span>
+                            <span className="text-purple-300 font-bold text-sm">Create something amazing</span>
                         </div>
                     </div>
                 </div>

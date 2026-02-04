@@ -19,37 +19,37 @@ export default function Home() {
   // const floatingEmojis = ['🔥', '💯', '⚡', '✨', '🚀', '💪', '🎯', '👑'];
   
   const categories = [
-    { name: 'Science', emoji: '🧬', color: 'from-green-400 to-cyan-400' },
-    { name: 'Pop Culture', emoji: '🎬', color: 'from-pink-400 to-purple-400' },
-    { name: 'History', emoji: '📜', color: 'from-yellow-400 to-orange-400' },
-    { name: 'Sports', emoji: '⚽', color: 'from-blue-400 to-cyan-400' },
-    { name: 'Music', emoji: '🎵', color: 'from-purple-400 to-pink-400' },
-    { name: 'Gaming', emoji: '🎮', color: 'from-red-400 to-pink-400' },
+    { name: 'Science', icon: <Brain className="w-6 h-6" />, color: 'from-green-400 to-cyan-400' },
+    { name: 'Pop Culture', icon: <Star className="w-6 h-6" />, color: 'from-pink-400 to-purple-400' },
+    { name: 'History', icon: <Award className="w-6 h-6" />, color: 'from-yellow-400 to-orange-400' },
+    { name: 'Sports', icon: <Trophy className="w-6 h-6" />, color: 'from-blue-400 to-cyan-400' },
+    { name: 'Music', icon: <Zap className="w-6 h-6" />, color: 'from-purple-400 to-pink-400' },
+    { name: 'Gaming', icon: <Users className="w-6 h-6" />, color: 'from-red-400 to-pink-400' },
   ];
 
   const features = [
     {
       icon: <Zap className="w-8 h-8" />,
-      title: 'lightning rounds',
-      desc: 'quick fire questions that keep u on ur toes fr fr',
+      title: 'Lightning Rounds',
+      desc: 'Quick-fire questions designed to challenge and engage',
       color: 'yellow'
     },
     {
       icon: <Trophy className="w-8 h-8" />,
-      title: 'flex zone',
-      desc: 'show off ur scores and become the ultimate quiz lord',
+      title: 'Score Tracking',
+      desc: 'Track your performance and compete with others',
       color: 'pink'
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: 'squad battles',
-      desc: 'challenge ur homies and see who\'s really big brain',
+      title: 'Community Challenges',
+      desc: 'Compete with friends and test your knowledge',
       color: 'cyan'
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
-      title: 'level up system',
-      desc: 'unlock badges, titles, and bragging rights as u go',
+      title: 'Progress System',
+      desc: 'Unlock achievements and track your learning journey',
       color: 'purple'
     }
   ];
@@ -140,7 +140,7 @@ export default function Home() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600/20 to-cyan-600/20 border border-purple-500/50 rounded-full backdrop-blur-sm animate-pulse-glow">
             <Sparkles className="w-4 h-4 text-yellow-400 animate-spin-slow" />
-            <span className="text-purple-300 font-bold text-sm tracking-wider">NO CAP THE BEST QUIZ PLATFORM</span>
+            <span className="text-purple-300 font-bold text-sm tracking-wider">PREMIUM QUIZ PLATFORM</span>
             <Sparkles className="w-4 h-4 text-yellow-400 animate-spin-slow" />
           </div>
 
@@ -163,22 +163,22 @@ export default function Home() {
                animationDelay: '0.2s',
                textShadow: '0 0 20px rgba(147, 51, 234, 0.5)'
              }}>
-            where <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">ur brain</span> gets the <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400">glow up</span> it deserves 💅
+            Where <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">knowledge</span> meets <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400">challenge</span>
           </p>
 
           {/* Feature Pills */}
           <div className="flex flex-wrap justify-center gap-3 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <div className="flex items-center gap-2 px-4 py-2 bg-purple-600/30 border border-purple-400/50 rounded-full backdrop-blur-sm hover:scale-110 transition-transform">
               <Zap className="w-5 h-5 text-yellow-400" />
-              <span className="text-white font-semibold">lightning fast</span>
+              <span className="text-white font-semibold">Lightning Fast</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-pink-600/30 border border-pink-400/50 rounded-full backdrop-blur-sm hover:scale-110 transition-transform">
               <Trophy className="w-5 h-5 text-yellow-400" />
-              <span className="text-white font-semibold">flex ur scores</span>
+              <span className="text-white font-semibold">Score Tracking</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-cyan-600/30 border border-cyan-400/50 rounded-full backdrop-blur-sm hover:scale-110 transition-transform">
               <Brain className="w-5 h-5 text-pink-400" />
-              <span className="text-white font-semibold">big brain energy</span>
+              <span className="text-white font-semibold">Smart Learning</span>
             </div>
           </div>
 
@@ -200,7 +200,7 @@ export default function Home() {
             </button>
             
             <button className="px-8 py-4 border-2 border-purple-400 rounded-full font-bold text-xl text-purple-300 hover:bg-purple-600/20 transition-all duration-300 hover:scale-105">
-              see leaderboard 👀
+              View Leaderboard
             </button>
           </div>
 
@@ -212,11 +212,11 @@ export default function Home() {
             </div>
             <div className="text-center">
               <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-cyan-400">5K+</div>
-              <div className="text-purple-300 font-semibold">brains upgraded</div>
+              <div className="text-purple-300 font-semibold">Active Users</div>
             </div>
             <div className="text-center">
               <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-green-400">100%</div>
-              <div className="text-purple-300 font-semibold">vibes immaculate</div>
+              <div className="text-purple-300 font-semibold">Satisfaction Rate</div>
             </div>
           </div>
         </div>
@@ -249,7 +249,7 @@ export default function Home() {
                 style={{ fontFamily: '"Bebas Neue", sans-serif' }}>
               FEATURES THAT HIT DIFFERENT
             </h2>
-            <p className="text-xl text-purple-300 font-semibold">we got all the sauce u need frfr 🔥</p>
+            <p className="text-xl text-purple-300 font-semibold">Everything you need to test and improve your knowledge</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -283,7 +283,7 @@ export default function Home() {
                 style={{ fontFamily: '"Bebas Neue", sans-serif' }}>
               QUIZ CATEGORIES
             </h2>
-            <p className="text-xl text-purple-300 font-semibold">endless topics to test ur knowledge 🧠</p>
+            <p className="text-xl text-purple-300 font-semibold">Explore diverse topics and expand your knowledge</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -292,7 +292,7 @@ export default function Home() {
                 key={i}
                 className="group p-6 rounded-xl bg-gradient-to-br from-purple-900/30 to-black border border-purple-500/30 hover:border-purple-400/60 backdrop-blur-sm hover:scale-110 transition-all duration-300 cursor-pointer text-center"
               >
-                <div className="text-5xl mb-3 group-hover:scale-125 transition-transform">{cat.emoji}</div>
+                <div className="mb-3 group-hover:scale-125 transition-transform text-purple-400">{cat.icon}</div>
                 <h3 className={`text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${cat.color}`}>
                   {cat.name}
                 </h3>
@@ -319,19 +319,19 @@ export default function Home() {
                 style={{ fontFamily: '"Bebas Neue", sans-serif' }}>
               HOW IT WORKS
             </h2>
-            <p className="text-xl text-purple-300 font-semibold">literally 3 steps that's it 💅</p>
+            <p className="text-xl text-purple-300 font-semibold">Simple, intuitive, and effective in three easy steps</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { num: '01', title: 'pick a vibe', desc: 'choose ur category and difficulty level', icon: '🎯' },
-              { num: '02', title: 'go crazy', desc: 'answer questions and rack up those points', icon: '💥' },
-              { num: '03', title: 'flex hard', desc: 'flex ur score and climb the leaderboard', icon: '👑' }
+              { num: '01', title: 'Choose Category', desc: 'Select your preferred topic and difficulty level', icon: <Brain className="w-12 h-12" /> },
+              { num: '02', title: 'Take Quiz', desc: 'Answer questions and track your progress', icon: <CheckCircle className="w-12 h-12" /> },
+              { num: '03', title: 'View Results', desc: 'Review your score and compare with others', icon: <Trophy className="w-12 h-12" /> }
             ].map((step, i) => (
               <div key={i} className="relative">
                 <div className="absolute -top-6 -left-6 text-8xl font-black text-purple-900/30">{step.num}</div>
                 <div className="relative p-8 rounded-2xl bg-gradient-to-br from-purple-900/20 to-pink-900/20 border border-purple-500/30 backdrop-blur-sm">
-                  <div className="text-6xl mb-4">{step.icon}</div>
+                  <div className="mb-4 text-purple-400">{step.icon}</div>
                   <h3 className="text-2xl font-black text-white mb-3" style={{ fontFamily: '"Space Mono", monospace' }}>
                     {step.title}
                   </h3>
@@ -354,14 +354,14 @@ export default function Home() {
                 style={{ fontFamily: '"Bebas Neue", sans-serif' }}>
               WHAT THE PEOPLE SAY
             </h2>
-            <p className="text-xl text-purple-300 font-semibold">dont just take our word for it 🗣️</p>
+            <p className="text-xl text-purple-300 font-semibold">See what our users have to say</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { name: 'alex', handle: '@alexthegreat', text: 'yo this site is UNREAL. i\'m literally addicted no cap 🔥', rating: 5 },
-              { name: 'sarah', handle: '@sarahvibes', text: 'best way to kill time AND feel smart?? yes please 💯', rating: 5 },
-              { name: 'mike', handle: '@mikecheck', text: 'finally beat my friend\'s high score. feeling ELITE rn 👑', rating: 5 }
+              { name: 'Alex', handle: '@alexthegreat', text: 'This platform is excellent. I\'ve been using it daily to improve my knowledge.', rating: 5 },
+              { name: 'Sarah', handle: '@sarahvibes', text: 'Great way to learn while having fun. Highly recommend it!', rating: 5 },
+              { name: 'Mike', handle: '@mikecheck', text: 'Finally beat my friend\'s high score. The competitive aspect keeps me engaged.', rating: 5 }
             ].map((test, i) => (
               <div key={i} className="p-6 rounded-xl bg-gradient-to-br from-purple-900/20 to-cyan-900/20 border border-purple-500/30 backdrop-blur-sm hover:scale-105 transition-transform">
                 <div className="flex gap-1 mb-4">
@@ -391,7 +391,7 @@ export default function Home() {
                 style={{ fontFamily: '"Bebas Neue", sans-serif' }}>
               READY TO GLOW UP?
             </h2>
-            <p className="text-2xl text-white mb-8 font-semibold">join thousands of big brain legends rn 🚀</p>
+            <p className="text-2xl text-white mb-8 font-semibold">Join thousands of learners today</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="px-10 py-5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-black text-2xl text-white hover:scale-105 transition-transform shadow-2xl">
                 START NOW
@@ -416,7 +416,7 @@ export default function Home() {
                 </div>
                 <Sparkles className="w-6 h-6 text-yellow-400" />
               </div>
-              <p className="text-purple-300 mb-4">where legends are made fr fr 💯</p>
+              <p className="text-purple-300 mb-4">Where knowledge meets excellence</p>
               <div className="flex gap-3">
                 <a href="#" className="w-10 h-10 rounded-full bg-purple-600/30 border border-purple-500/50 flex items-center justify-center hover:scale-110 transition-transform">
                   <Instagram className="w-5 h-5 text-purple-300" />
@@ -468,10 +468,10 @@ export default function Home() {
 
           {/* Bottom Bar */}
           <div className="pt-8 border-t border-purple-500/30 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-purple-400 text-sm">© 2026 Quizo. all rights reserved. stay bussin 🔥</p>
+            <p className="text-purple-400 text-sm">© 2026 Quizo. All rights reserved.</p>
             <div className="flex gap-2 items-center">
               <CheckCircle className="w-4 h-4 text-green-400" />
-              <span className="text-purple-300 text-sm">100% legit • 0% cap</span>
+              <span className="text-purple-300 text-sm">Trusted Platform • Secure & Reliable</span>
             </div>
           </div>
         </div>

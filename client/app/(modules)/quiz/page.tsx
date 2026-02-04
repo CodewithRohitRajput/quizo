@@ -86,7 +86,7 @@ export default function Quiz(){
                                     <Sparkles className="w-8 h-8 text-yellow-400 animate-spin-slow" />
                                 </div>
                                 <p className="text-purple-300 font-semibold text-lg mt-2">
-                                    find ur next challenge and flex that brain power 🧠
+                                    Discover your next challenge and test your knowledge
                                 </p>
                             </div>
                         </div>
@@ -164,9 +164,8 @@ export default function Quiz(){
                     ) : filteredQuizzes.length === 0 ? (
                         // Empty state
                         <div className="flex flex-col items-center justify-center py-20">
-                            <div className="text-6xl mb-4">😔</div>
-                            <h3 className="text-3xl font-black text-white mb-2">no quizzes found</h3>
-                            <p className="text-purple-300 text-lg">try adjusting ur search or filters</p>
+                            <h3 className="text-3xl font-black text-white mb-2">No Quizzes Found</h3>
+                            <p className="text-purple-300 text-lg">Try adjusting your search or filters</p>
                         </div>
                     ) : (
                         // Quiz Grid
@@ -256,10 +255,10 @@ export default function Quiz(){
                         <div className="bg-gradient-to-br from-purple-600/20 to-pink-600/20 border-2 border-purple-500/50 backdrop-blur-lg rounded-3xl p-8 text-center">
                             <h3 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-3"
                                 style={{ fontFamily: '"Bebas Neue", sans-serif' }}>
-                                CAN'T FIND WHAT U LOOKING FOR?
+                                CAN'T FIND WHAT YOU'RE LOOKING FOR?
                             </h3>
                             <p className="text-purple-300 text-lg mb-6 font-semibold">
-                                create ur own quiz and challenge the community 🔥
+                                Create your own quiz and challenge the community
                             </p>
                             <button onClick={()=>{router.push("/quiz/create")}} className="px-8 py-4 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-full font-black text-xl text-white hover:scale-105 transition-transform shadow-xl">
                                 CREATE QUIZ

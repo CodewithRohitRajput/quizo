@@ -9,3 +9,4 @@ database = client.quizo
 user_collection = database.users
 quiz_collection = database.quiz
 question_collection = database.question
+attempt_quiz = database.attempt

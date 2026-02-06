@@ -47,7 +47,7 @@ export default function attemptQuiz(){
     const fetchQuestion = async(questionId : string) => {
         try {
             const res = await fetch(`http://localhost:8000/question/${questionId}`, {
-                method : 'GET',
+              method : 'GET',
                 credentials : 'include'
             })
             const data = await res.json()

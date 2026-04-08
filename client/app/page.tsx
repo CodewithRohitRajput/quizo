@@ -9,7 +9,7 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener('mousemove', handleMouseMove);

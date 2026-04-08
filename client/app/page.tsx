@@ -199,7 +199,7 @@ export default function Home() {
               </div>
             </button>
             
-            <button className="px-8 py-4 border-2 border-purple-400 rounded-full font-bold text-xl text-purple-300 hover:bg-purple-600/20 transition-all duration-300 hover:scale-105">
+            <button onClick={() => router.push('/leaderboard')} className="px-8 py-4 border-2 border-purple-400 rounded-full font-bold text-xl text-purple-300 hover:bg-purple-600/20 transition-all duration-300 hover:scale-105">
               View Leaderboard
             </button>
           </div>

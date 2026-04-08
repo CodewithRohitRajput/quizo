@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Sparkles, Mail, Lock, ArrowRight, Eye, EyeOff, CheckCircle, AlertCircle } from 'lucide-react'
 import { useRouter } from "next/navigation"
+import AppNavbar from "@/components/AppNavbar";
 
 export default function Login(){
     const[form, setForm] = useState({
@@ -46,7 +47,8 @@ export default function Login(){
     const isSuccess = response.toLowerCase().includes('success') || response.toLowerCase().includes('welcome');
 
     return(
-        <div className="min-h-screen bg-black flex items-center justify-center p-4 relative overflow-hidden">
+        <div className="min-h-screen bg-black relative overflow-hidden">
+            <AppNavbar />
             {/* Animated background */}
             <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-black to-cyan-900 opacity-50"></div>
             
@@ -74,7 +76,8 @@ export default function Login(){
             ))} */}
 
             {/* Main login card */}
-            <div className="relative z-10 w-full max-w-md">
+            <div className="relative z-10 min-h-[calc(100vh-64px)] flex items-center justify-center p-4">
+            <div className="w-full max-w-md">
                 {/* Back link */}
                 <a href="/" className="inline-flex items-center gap-2 text-purple-300 hover:text-purple-400 mb-6 group">
                     <ArrowRight className="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
@@ -244,6 +247,7 @@ export default function Login(){
                         <span className="text-purple-300 font-bold text-sm">Secure Login • Protected & Safe</span>
                     </div>
                 </div>
+            </div>
             </div>
 
             {/* Custom animations */}

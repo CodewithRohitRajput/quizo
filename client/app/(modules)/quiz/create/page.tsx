@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { Sparkles, FileText, AlignLeft, CheckCircle, AlertCircle, Zap, ArrowRight, Info, ToggleLeft, ToggleRight } from 'lucide-react'
+import AppNavbar from "@/components/AppNavbar";
 
 export default function CreateQuiz(){
     const router = useRouter()
@@ -54,6 +55,7 @@ export default function CreateQuiz(){
 
     return(
         <div className="min-h-screen bg-black">
+            <AppNavbar />
             {/* Background effects */}
             <div className="fixed inset-0 bg-gradient-to-br from-purple-900 via-black to-cyan-900 opacity-50"></div>
             <div className="fixed inset-0 opacity-10" style={{
@@ -63,7 +65,7 @@ export default function CreateQuiz(){
             }}></div>
 
 
-            <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
+            <div className="relative z-10 min-h-[calc(100vh-64px)] flex items-center justify-center p-4">
                 <div className="w-full max-w-2xl">
                     {/* Back link */}
                     <a href="/quiz" className="inline-flex items-center gap-2 text-purple-300 hover:text-purple-400 mb-6 group">

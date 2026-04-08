@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Sparkles, Mail, Lock, User, ArrowRight, Eye, EyeOff, CheckCircle, AlertCircle } from 'lucide-react'
 import { useRouter } from "next/navigation"
+import AppNavbar from "@/components/AppNavbar";
 
 export default function Signup(){
     const[form, setForm] = useState({
@@ -46,7 +47,8 @@ export default function Signup(){
     const isSuccess = responses.toLowerCase().includes('success') || responses.toLowerCase().includes('created');
 
     return(
-        <div className="min-h-screen bg-black flex items-center justify-center p-4 relative overflow-hidden">
+        <div className="min-h-screen bg-black relative overflow-hidden">
+            <AppNavbar />
             {/* Animated background */}
             <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-black to-cyan-900 opacity-50"></div>
             
@@ -74,7 +76,8 @@ export default function Signup(){
             ))} */}
 
             {/* Main signup card */}
-            <div className="relative z-10 w-full max-w-md">
+            <div className="relative z-10 min-h-[calc(100vh-64px)] flex items-center justify-center p-4">
+            <div className="w-full max-w-md">
                 {/* Back link */}
                 <a href="/" className="inline-flex items-center gap-2 text-purple-300 hover:text-purple-400 mb-6 group">
                     <ArrowRight className="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
@@ -245,6 +248,7 @@ export default function Signup(){
                         <span className="text-purple-300 font-bold text-sm">Join 5000+ Active Learners</span>
                     </div>
                 </div>
+            </div>
             </div>
 
             {/* Custom animations */}

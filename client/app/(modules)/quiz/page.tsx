@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { Sparkles, Clock, User, Play, Trophy, TrendingUp, Zap, CheckCircle, XCircle, Search, Filter } from 'lucide-react'
 import { useRouter } from "next/navigation";
+import AppNavbar from "@/components/AppNavbar";
 
 export default function Quiz(){
     const[quiz,setQuiz] = useState<any[]>([]);
@@ -43,7 +44,8 @@ export default function Quiz(){
     };
 
     return(
-        <div className="min-h-screen bg-black">
+        <div className="min-h-screen bg-black overflow-y-auto">
+            <AppNavbar />
             {/* Background effects */}
             {/* <div className="fixed inset-0 bg-gradient-to-br from-purple-900 via-black to-cyan-900 opacity-50"></div>
             <div className="fixed inset-0 opacity-10" style={{
@@ -70,7 +72,7 @@ export default function Quiz(){
 
             <div className="relative z-10">
                 {/* Header */}
-                <div className="bg-black/40 backdrop-blur-lg border-b border-purple-500/30 sticky top-0 z-20">
+                <div className="bg-black/40 backdrop-blur-lg border-b border-purple-500/30">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                         <div className="flex items-center justify-between mb-6">
                             <div>
@@ -154,7 +156,7 @@ export default function Quiz(){
                 </div>
 
                 {/* Main Content */}
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
                     {loading ? (
                         // Loading state
                         <div className="flex flex-col items-center justify-center py-20">
@@ -225,6 +227,11 @@ export default function Quiz(){
 
                                         {/* Action button */}
                                         <button
+                                            onClick={() => {
+                                                if (q.is_active) {
+                                                    router.push(`/quiz/${q._id}`);
+                                                }
+                                            }}
                                             disabled={!q.is_active}
                                             className={`w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-black text-white transition-all ${
                                                 q.is_active
@@ -235,7 +242,7 @@ export default function Quiz(){
                                             {q.is_active ? (
                                                 <>
                                                     <Play className="w-5 h-5" />
-                                                    <span onClick={()=>{router.push(`/quiz/${q._id}`)}}>ATTEMPT NOW</span>
+                                                    <span>ATTEMPT NOW</span>
                                                     <Zap className="w-5 h-5" />
                                                 </>
                                             ) : (

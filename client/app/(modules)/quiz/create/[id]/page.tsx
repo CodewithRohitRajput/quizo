@@ -2,6 +2,7 @@
 import { useParams, useRouter } from "next/navigation"
 import { useState, useEffect } from "react"
 import { ArrowLeft, Plus, Trash2, FileText, CheckCircle, ArrowRight } from 'lucide-react'
+import AppNavbar from "@/components/AppNavbar";
 
 export default function createQuestions(){
     const params = useParams()
@@ -9,7 +10,8 @@ export default function createQuestions(){
     const[questions, setQuestions] = useState([{
         question_test : '',
         options : ['', '', '', ''],
-        correct_option : ''
+        correct_option : '',
+        correct_option_index: -1
     }])
     const [name, setName] = useState('')
     const [loading, setLoading] = useState(false)
@@ -38,10 +40,18 @@ export default function createQuestions(){
       setResponse('');
       
       try {
-          const questionsWithQuizId = questions.map(q=>({
-              ...q,
-              quiz_id
-          }))
+          const questionsWithQuizId = questions.map((q) => ({
+              quiz_id,
+              // keep both spellings because backend schema may vary
+              question_test: q.question_test,
+              question_text: q.question_test,
+              options: q.options,
+              // keep both text and index for correct answer
+              correct_option: q.correct_option,
+              correct_answer: q.correct_option,
+              answer: q.correct_option,
+              correct_option_index: q.correct_option_index
+          }));
           
           const res = await fetch(`http://localhost:8000/question`, {
             method : "POST",
@@ -55,6 +65,18 @@ export default function createQuestions(){
           const data = await res.json();
           
           if (data.ids) {
+              try {
+                  const answerKey = data.ids.map((id: string, idx: number) => ({
+                      question_id: id,
+                      question_test: questions[idx]?.question_test ?? "",
+                      correct_option: questions[idx]?.correct_option ?? "",
+                      correct_option_index: questions[idx]?.correct_option_index ?? -1
+                  }));
+                  localStorage.setItem(`quizo_answer_key_${quiz_id}`, JSON.stringify(answerKey));
+              } catch (error) {
+                  console.error("Failed to save answer key locally:", error);
+              }
+
               const quizRes = await fetch( `http://localhost:8000/quiz/${quiz_id}` , {
                 method : "GET",
                 credentials : "include"
@@ -89,7 +111,8 @@ export default function createQuestions(){
         setQuestions([...questions, {
             question_test : '',
             options : ['', '', '', ''],
-            correct_option : ''
+            correct_option : '',
+            correct_option_index: -1
         }])
     }
 
@@ -108,12 +131,15 @@ export default function createQuestions(){
             updated[index].options[optIndex] = value;
         } else if (field === 'correct_option') {
             updated[index].correct_option = value;
+        } else if (field === 'correct_option_index') {
+            updated[index].correct_option_index = value;
         }
         setQuestions(updated);
     }
 
     return(
         <div className="min-h-screen bg-black">
+            <AppNavbar />
             {/* Background effects */}
             <div className="fixed inset-0 bg-gradient-to-br from-purple-900 via-black to-cyan-900 opacity-50"></div>
             <div className="fixed inset-0 opacity-10" style={{
@@ -124,7 +150,7 @@ export default function createQuestions(){
 
             <div className="relative z-10">
                 {/* Header */}
-                <div className="bg-black/40 backdrop-blur-lg border-b border-purple-500/30 sticky top-0 z-20">
+                <div className="bg-black/40 backdrop-blur-lg border-b border-purple-500/30 sticky top-16 z-20">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                         <div className="flex items-center justify-between mb-4">
                             <a href="/quiz/create" className="inline-flex items-center gap-2 text-purple-300 hover:text-purple-400 group">
@@ -193,15 +219,19 @@ export default function createQuestions(){
                                     <div>
                                         <label className="text-purple-300 font-semibold text-sm mb-2 block">Correct Answer</label>
                                         <select
-                                            value={q.correct_option}
-                                            onChange={e => updateQuestion(idx, 'correct_option', e.target.value)}
+                                            value={q.correct_option_index >= 0 ? String(q.correct_option_index) : ''}
+                                            onChange={e => {
+                                                const selectedIdx = Number(e.target.value);
+                                                updateQuestion(idx, 'correct_option_index', selectedIdx);
+                                                updateQuestion(idx, 'correct_option', q.options[selectedIdx] ?? '');
+                                            }}
                                             className="w-full px-4 py-3 bg-purple-950/30 border border-purple-500/50 rounded-xl text-white focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition-all"
                                             required
                                         >
                                             <option value="">Select correct option</option>
                                             {q.options.map((opt, optIdx) => (
                                                 opt && (
-                                                    <option key={optIdx} value={opt}>
+                                                    <option key={optIdx} value={String(optIdx)}>
                                                         {opt}
                                                     </option>
                                                 )
